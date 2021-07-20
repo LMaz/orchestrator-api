@@ -1,0 +1,153 @@
+{
+  "context": {
+    "issueOffice": "ZRH175",
+    "locator": "RHFJIT",
+    "checkinFlowMode": "REGULAR",
+    "slices": [
+      {
+        "segmentIds": [
+          "IB000220200802"
+        ],
+        "id": "MADBCN20200802191500"
+      },
+      {
+        "segmentIds": [
+          "IB348220200828"
+        ],
+        "id": "BCNMAD20200828203000"
+      }
+    ],
+    "issueCountry": "CH",
+    "bookingDate": "2020-08-04 15:53",
+    "segments": [
+      {
+        "operatingFlight": {
+          "cabin": {
+            "cabinClass": {
+              "type": "ECONOMY",
+              "rbd": "O"
+            },
+            "carrier": "IB"
+          },
+          "flightNumber": "0002"
+        },
+        "arrivalDate": "2020-08-02 21:20",
+        "utcArrivalDate": "2020-08-02 19:20",
+        "marketingFlight": {
+          "cabin": {
+            "cabinClass": {
+              "type": "ECONOMY",
+              "rbd": "O"
+            },
+            "carrier": "I2"
+          },
+          "flightNumber": "0002"
+        },
+        "flown": false,
+        "arrivalAirport": "BCN",
+        "departureAirport": "MAD",
+        "departureDate": "2020-08-02 19:15",
+        "edifact": false,
+        "passengerCoupons": [
+          {
+            "infantCoupon": {
+              "id": "INFANT_01",
+              "coupon": "INF",
+              "farebasis": "XDFF",
+              "numberTicket": "075000000003",
+              "ticketDesignator": null,
+              "issueDate": "2019-02-25"
+            },
+            "coupon": "1",
+            "farebasis": "ODNNANB5",
+            "franchisePieces": [
+              {
+                "subtype": "BAGGAGE_23",
+                "units": 2,
+                "description": "23Kg"
+              }
+            ],
+            "numberTicket": "0752391826332",
+            "ticketDesignator": null,
+            "seat": {
+              "row": "12",
+              "column": "A"
+            },
+            "extraPieces": [],
+            "eligible": true,
+            "issueDate": "2020-07-08T22:00:00.000Z",
+            "id": "ADULT_01",
+            "status": {
+              "message": "CHECKABLE",
+              "code": "CHECKABLE"
+            }
+          }
+        ],
+        "pricesProvider": "TARIFICATOR",
+        "utcDepartureDate": "2020-08-02 17:15",
+        "time": "BKI",
+        "id": "IB000220200802"
+      }
+    ],
+    "flownSegments": false,
+    "paymentMode": "ONLINE",
+    "passengers": [
+      {
+        "surname": "IOAS",
+        "frequentFlyer": {
+          "number": "72749559",
+          "level": "8",
+          "topTier": "CLA",
+          "company": "IB"
+        },
+        "name": "CHARLES",
+        "passengerType": "ADULT",
+        "ticketPrices": [
+          {
+            "currency": "CHF",
+            "number": "0752391826332",
+            "tax": 47.15,
+            "fare": 43,
+            "total": 90.15
+          }
+        ],
+        "items": [
+          "DEAF"
+        ],
+        "title": "MR",
+        "infant": {
+          "id": "INFANT_01",
+          "surname": "PRUEBAS",
+          "name": "BEBE",
+          "ticketPrices": [
+            {
+              "currency": "EUR",
+              "number": "075000000003",
+              "tax": 32.91,
+              "fare": 25,
+              "total": 62.91
+            }
+          ],
+          "birthDate": "2018-12-30"
+        },
+        "resiberId": "2",
+        "birthDate": "1980-01-02",
+        "id": "ADULT_01"
+      }
+    ],
+    "issueCurrency": "CHF",
+    "dynamicPricing": false
+  },
+  "request": {
+    "currency": "EUR",
+    "type": "PRIORITY_BOARDING",
+    "segmentIds": [
+      {
+        "id": "IB000220200802",
+        "passengers": [
+          "ADULT_01"
+        ]
+      }
+    ]
+  }
+}

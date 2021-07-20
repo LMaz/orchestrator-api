@@ -1,0 +1,9 @@
+{
+  "locator": "KLDSD",
+  "arrivalAirport": "MAD",
+  "departureAirport": "GVA",
+  "departureDate": "2020-08-07",
+  "carrier": "IB",
+  "flightNumber": "3493",
+  "quantity": 2
+}

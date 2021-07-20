@@ -1,0 +1,28 @@
+{
+  "currency": "EUR",
+  "prices": [
+    {
+      "segmentId": "IB349320200807",
+      "passengers": [
+        {
+          "id": "ADULT_01",
+          "amount": 10
+        }
+      ],
+      "status": null
+    },
+    {
+      "segmentId": "IB034020200808",
+      "passengers": [
+        {
+          "id": "ADULT_01",
+          "amount": null
+        }
+      ],
+      "status": {
+        "reason": "prices not charged / out of stock",
+        "code.string": "NOT_AVAILABLE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,721 @@
+{
+	"info": {
+		"_postman_id": "9fdc2e85-60d0-4ea2-b979-a7dcaad7cec0",
+		"name": "PRIO-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vuelo que NO está en Inventario y NO coincideo con ninguna regla (ret = 0)",
+			"item": [
+				{
+					"name": "get_prices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5da21c47-baee-4d86-8928-e580a527965c",
+								"exec": [
+									"pm.test('Inventario es cero', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prices[0].passengers[0].amount).to.eql('null');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"RHFJIT\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000120200801\"\n        ],\n        \"id\": \"GVAMAD20200801191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"MADGVA20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0001\"\n        },\n        \"arrivalDate\": \"2020-08-01 21:20\",\n        \"utcArrivalDate\": \"2020-08-01 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0001\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"MAD\",\n        \"departureAirport\": \"GVA\",\n        \"departureDate\": \"2020-08-01 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-01 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000120200801\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000120200801\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/request_priority_boarding",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"request_priority_boarding"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Vuelo que \n    NO está en Inventario y \n    NO coincideo con ninguna regla \n    --> (ret = 0)\n\n\nEntrada:\n{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"RHFJIT\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000120200801\"\n        ],\n        \"id\": \"GVAMAD20200801191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"MADGVA20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0001\"\n        },\n        \"arrivalDate\": \"2020-08-01 21:20\",\n        \"utcArrivalDate\": \"2020-08-01 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0001\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"MAD\",\n        \"departureAirport\": \"GVA\",\n        \"departureDate\": \"2020-08-01 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-01 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000120200801\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000120200801\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6aa698e-b650-4c9f-b295-41388c034aea",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa406dcf-206c-452d-b0f4-a794424329da",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Vuelo que NO está en Inventario, Si coincide una regla, y HAY plazas suficientes (ret > 0)",
+			"item": [
+				{
+					"name": "get_prices (escribe en INVENTORY)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4503a06e-3f12-4d1d-aa3d-66476c87b989",
+								"exec": [
+									"pm.test('Amount es 12.0', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prices[0].passengers[0].amount).to.eql('12.0');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"RHFJIT\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000220200802\"\n        ],\n        \"id\": \"MADBCN20200802191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"BCNMAD20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"arrivalDate\": \"2020-08-02 21:20\",\n        \"utcArrivalDate\": \"2020-08-02 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"BCN\",\n        \"departureAirport\": \"MAD\",\n        \"departureDate\": \"2020-08-02 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-02 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000220200802\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000220200802\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/request_priority_boarding",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"request_priority_boarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lock",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "811dfaf8-e09b-4842-bee8-649741e08c9c",
+								"exec": [
+									"pm.test('Response is OK', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.body('[\"OK\"]');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"locator\": \"KLDSD\",\n  \"arrivalAirport\": \"MAD\",\n  \"departureAirport\": \"GVA\",\n  \"departureDate\": \"2020-08-02\",\n  \"carrier\": \"IB\",\n  \"flightNumber\": \"0002\",\n  \"quantity\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/_lock/123",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"_lock",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buy (incrementa vendidos en INVENTORY)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e3df28c-5a73-401f-a9fb-8a0124ecf46c",
+								"exec": [
+									"pm.test('Response is OK', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.body('[\"OK\"]');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"locator\": \"KLDSD\",\n  \"arrivalAirport\": \"MAD\",\n  \"departureAirport\": \"GVA\",\n  \"departureDate\": \"2020-08-02\",\n  \"carrier\": \"IB\",\n  \"flightNumber\": \"0002\",\n  \"quantity\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/request_priority_confirm/123",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"request_priority_confirm",
+								"123"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Vuelo que \n    NO está en Inventario, \n    Si coincide una regla, \n    y HAY plazas suficientes \n    (ret > 0)\n\nEntrada:\n{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"RHFJIT\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000220200802\"\n        ],\n        \"id\": \"MADBCN20200802191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"BCNMAD20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"arrivalDate\": \"2020-08-02 21:20\",\n        \"utcArrivalDate\": \"2020-08-02 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"BCN\",\n        \"departureAirport\": \"MAD\",\n        \"departureDate\": \"2020-08-02 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-02 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000220200802\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000220200802\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Vuelo que ESTÁ en Inventario y HAY plazas disponibles. Después se bloquea y ya NO hay plazas disponibles (ret1 > 0, ret2 = null)",
+			"item": [
+				{
+					"name": "get_prices (Ya está en inventory + se suma el markup)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ad430fa2-6130-488f-9d24-5fa79f24a44a",
+								"exec": [
+									"pm.test('Amount es 14.5', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prices[0].passengers[0].amount).to.eql('14.5');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"RHFJIT\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000220200802\"\n        ],\n        \"id\": \"MADBCN20200802191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"BCNMAD20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"arrivalDate\": \"2020-08-02 21:20\",\n        \"utcArrivalDate\": \"2020-08-02 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"BCN\",\n        \"departureAirport\": \"MAD\",\n        \"departureDate\": \"2020-08-02 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-02 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000220200802\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000220200802\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/request_priority_boarding",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"request_priority_boarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lock",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6bf5974c-79ec-4274-b82b-4d7cb4c78d13",
+								"exec": [
+									"pm.test('Response is OK', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.body('[\"OK\"]');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"locator\": \"KLDSD\",\n  \"arrivalAirport\": \"MAD\",\n  \"departureAirport\": \"GVA\",\n  \"departureDate\": \"2020-08-02\",\n  \"carrier\": \"IB\",\n  \"flightNumber\": \"0002\",\n  \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/_lock/0812",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"_lock",
+								"0812"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_prices (Ya no hay suficientes)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c3567e07-deaa-4cca-ae59-40f7db178ad0",
+								"exec": [
+									"pm.test('No hay suficiente inventario', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prices[0].passengers[0].amount).to.eql('null');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"KLDSD\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000220200802\"\n        ],\n        \"id\": \"MADBCN20200802191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"BCNMAD20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"arrivalDate\": \"2020-08-02 21:20\",\n        \"utcArrivalDate\": \"2020-08-02 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"BCN\",\n        \"departureAirport\": \"MAD\",\n        \"departureDate\": \"2020-08-02 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-02 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000220200802\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000220200802\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/request_priority_boarding",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"request_priority_boarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlock",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "731c5240-f0d9-4228-891e-ba75d7203459",
+								"exec": [
+									"pm.test('Response is OK', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.body('[\"OK\"]');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"locator\": \"KLDSD\",\n  \"arrivalAirport\": \"MAD\",\n  \"departureAirport\": \"GVA\",\n  \"departureDate\": \"2020-08-02\",\n  \"carrier\": \"IB\",\n  \"flightNumber\": \"0002\",\n  \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/_unlock/0812",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"_unlock",
+								"0812"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_prices (Vuelve a haber suficientes + se suma el markup)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3f25fece-6eac-4ced-b02e-e11ae7226956",
+								"exec": [
+									"pm.test('Amount es 14.5', function(){",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prices[0].passengers[0].amount).to.eql('14.5');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{x-api-key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"RHFJIT\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000220200802\"\n        ],\n        \"id\": \"MADBCN20200802191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"BCNMAD20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"arrivalDate\": \"2020-08-02 21:20\",\n        \"utcArrivalDate\": \"2020-08-02 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"BCN\",\n        \"departureAirport\": \"MAD\",\n        \"departureDate\": \"2020-08-02 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-02 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000220200802\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000220200802\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prio-api-url}}/request_priority_boarding",
+							"host": [
+								"{{prio-api-url}}"
+							],
+							"path": [
+								"request_priority_boarding"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Vuelo que \n    ESTÁ en Inventario \n    y HAY plazas disponibles\n    (ret > 0)\nDespués \n    se bloquea \n    y ya NO hay plazas disponibles\n    (ret = null)\n\n\nEntrada:\n{\n  \"context\": {\n    \"issueOffice\": \"ZRH175\",\n    \"locator\": \"RHFJIT\",\n    \"checkinFlowMode\": \"REGULAR\",\n    \"slices\": [\n      {\n        \"segmentIds\": [\n          \"IB000220200802\"\n        ],\n        \"id\": \"MADBCN20200802191500\"\n      },\n      {\n        \"segmentIds\": [\n          \"IB348220200828\"\n        ],\n        \"id\": \"BCNMAD20200828203000\"\n      }\n    ],\n    \"issueCountry\": \"CH\",\n    \"bookingDate\": \"2020-08-04 15:53\",\n    \"segments\": [\n      {\n        \"operatingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"IB\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"arrivalDate\": \"2020-08-02 21:20\",\n        \"utcArrivalDate\": \"2020-08-02 19:20\",\n        \"marketingFlight\": {\n          \"cabin\": {\n            \"cabinClass\": {\n              \"type\": \"ECONOMY\",\n              \"rbd\": \"O\"\n            },\n            \"carrier\": \"I2\"\n          },\n          \"flightNumber\": \"0002\"\n        },\n        \"flown\": false,\n        \"arrivalAirport\": \"BCN\",\n        \"departureAirport\": \"MAD\",\n        \"departureDate\": \"2020-08-02 19:15\",\n        \"edifact\": false,\n        \"passengerCoupons\": [\n          {\n            \"infantCoupon\": {\n              \"id\": \"INFANT_01\",\n              \"coupon\": \"INF\",\n              \"farebasis\": \"XDFF\",\n              \"numberTicket\": \"075000000003\",\n              \"ticketDesignator\": null,\n              \"issueDate\": \"2019-02-25\"\n            },\n            \"coupon\": \"1\",\n            \"farebasis\": \"ODNNANB5\",\n            \"franchisePieces\": [\n              {\n                \"subtype\": \"BAGGAGE_23\",\n                \"units\": 2,\n                \"description\": \"23Kg\"\n              }\n            ],\n            \"numberTicket\": \"0752391826332\",\n            \"ticketDesignator\": null,\n            \"seat\": {\n              \"row\": \"12\",\n              \"column\": \"A\"\n            },\n            \"extraPieces\": [],\n            \"eligible\": true,\n            \"issueDate\": \"2020-07-08T22:00:00.000Z\",\n            \"id\": \"ADULT_01\",\n            \"status\": {\n              \"message\": \"CHECKABLE\",\n              \"code\": \"CHECKABLE\"\n            }\n          }\n        ],\n        \"pricesProvider\": \"TARIFICATOR\",\n        \"utcDepartureDate\": \"2020-08-02 17:15\",\n        \"time\": \"BKI\",\n        \"id\": \"IB000220200802\"\n      }\n    ],\n    \"flownSegments\": false,\n    \"paymentMode\": \"ONLINE\",\n    \"passengers\": [\n      {\n        \"surname\": \"IOAS\",\n        \"frequentFlyer\": {\n          \"number\": \"72749559\",\n          \"level\": \"8\",\n          \"topTier\": \"CLA\",\n          \"company\": \"IB\"\n        },\n        \"name\": \"CHARLES\",\n        \"passengerType\": \"ADULT\",\n        \"ticketPrices\": [\n          {\n            \"currency\": \"CHF\",\n            \"number\": \"0752391826332\",\n            \"tax\": 47.15,\n            \"fare\": 43,\n            \"total\": 90.15\n          }\n        ],\n        \"items\": [\n          \"DEAF\"\n        ],\n        \"title\": \"MR\",\n        \"infant\": {\n          \"id\": \"INFANT_01\",\n          \"surname\": \"PRUEBAS\",\n          \"name\": \"BEBE\",\n          \"ticketPrices\": [\n            {\n              \"currency\": \"EUR\",\n              \"number\": \"075000000003\",\n              \"tax\": 32.91,\n              \"fare\": 25,\n              \"total\": 62.91\n            }\n          ],\n          \"birthDate\": \"2018-12-30\"\n        },\n        \"resiberId\": \"2\",\n        \"birthDate\": \"1980-01-02\",\n        \"id\": \"ADULT_01\"\n      }\n    ],\n    \"issueCurrency\": \"CHF\",\n    \"dynamicPricing\": false\n  },\n  \"request\": {\n    \"currency\": \"EUR\",\n    \"type\": \"PRIORITY_BOARDING\",\n    \"segmentIds\": [\n      {\n        \"id\": \"IB000220200802\",\n        \"passengers\": [\n          \"ADULT_01\"\n        ]\n      }\n    ]\n  }\n}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a39e8283-2052-4a7c-8d60-dc8eabc85505",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "429ed2cc-46c7-4826-a22f-896b1773e174",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Check API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9f6b2af6-8c1d-439c-b08b-fbb25bd0cd01",
+						"exec": [
+							"pm.test('Response is UP', function(){",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.have.body('[\"UP\"]');",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/health",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/health",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

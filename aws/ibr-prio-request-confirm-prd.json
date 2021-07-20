@@ -1,0 +1,24 @@
+{
+                    "RoleARN": "arn:aws:iam::077156906314:role/prdeu-ibr-kinesis-ancilliares-rol",
+                    "BucketARN": "arn:aws:s3:::ibr-prd-dynamic-pricing-s3",
+                    "Prefix": "prio/request_confirm/",
+                    "ErrorOutputPrefix": "",
+                    "BufferingHints": {
+                        "SizeInMBs": 5,
+                        "IntervalInSeconds": 300
+                    },
+                    "CompressionFormat": "GZIP",
+                    "EncryptionConfiguration": {
+                        "NoEncryptionConfig": "NoEncryption"
+                    },
+                    "CloudWatchLoggingOptions": {
+                        "Enabled": true,
+                        "LogGroupName": "/aws/kinesisfirehose/ibr-prio-request-confirm-prd",
+                        "LogStreamName": "S3Delivery"
+                    },
+                    "ProcessingConfiguration": {
+                        "Enabled": false,
+                        "Processors": []
+                    },
+                    "S3BackupMode": "Disabled"
+}
